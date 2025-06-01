@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Recycle, Sun, Moon, Laptop, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,8 +6,14 @@ import { useTheme } from "@/components/ThemeProvider";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [, navigate] = useLocation(); // useLocation gives a navigate function in wouter
+  const [, navigate] = useLocation();
   const { theme, setTheme } = useTheme();
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+  useEffect(() => {
+    const auth = localStorage.getItem("auth");
+    setIsAuthenticated(!!auth);
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -15,9 +21,10 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/logout', { method: 'POST' });
-      localStorage.removeItem('auth');
-      navigate('/');
+      await fetch("/api/logout", { method: "POST" });
+      localStorage.removeItem("auth");
+      setIsAuthenticated(false);
+      navigate("/");
     } catch (error) {
       console.error("Logout failed:", error);
     }
@@ -50,33 +57,33 @@ const Navbar = () => {
             {/* Theme toggle buttons */}
             <div className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-full">
               <button
-                onClick={() => setTheme('light')}
+                onClick={() => setTheme("light")}
                 className={`p-1.5 rounded-full ${
-                  theme === 'light'
-                    ? 'bg-white text-yellow-500 shadow-sm'
-                    : 'text-gray-500 dark:text-gray-400 hover:text-yellow-500'
+                  theme === "light"
+                    ? "bg-white text-yellow-500 shadow-sm"
+                    : "text-gray-500 dark:text-gray-400 hover:text-yellow-500"
                 }`}
                 title="Light mode"
               >
                 <Sun className="h-4 w-4" />
               </button>
               <button
-                onClick={() => setTheme('system')}
+                onClick={() => setTheme("system")}
                 className={`p-1.5 rounded-full ${
-                  theme === 'system'
-                    ? 'bg-white dark:bg-gray-700 text-primary dark:text-blue-400 shadow-sm'
-                    : 'text-gray-500 dark:text-gray-400 hover:text-blue-400'
+                  theme === "system"
+                    ? "bg-white dark:bg-gray-700 text-primary dark:text-blue-400 shadow-sm"
+                    : "text-gray-500 dark:text-gray-400 hover:text-blue-400"
                 }`}
                 title="System theme"
               >
                 <Laptop className="h-4 w-4" />
               </button>
               <button
-                onClick={() => setTheme('dark')}
+                onClick={() => setTheme("dark")}
                 className={`p-1.5 rounded-full ${
-                  theme === 'dark'
-                    ? 'bg-gray-700 text-blue-400 shadow-sm'
-                    : 'text-gray-500 dark:text-gray-400 hover:text-blue-400'
+                  theme === "dark"
+                    ? "bg-gray-700 text-blue-400 shadow-sm"
+                    : "text-gray-500 dark:text-gray-400 hover:text-blue-400"
                 }`}
                 title="Dark mode"
               >
@@ -88,19 +95,29 @@ const Navbar = () => {
               <Button className="hidden md:block">Book Pickup</Button>
             </a>
 
-            {/* Logout Button - Desktop */}
-            <Button 
-              variant="outline" 
-              className="hidden md:flex items-center gap-1"
-              onClick={handleLogout}
-              title="Logout"
-            >
-              <LogOut className="h-4 w-4" />
-              Logout
-            </Button>
+            {isAuthenticated ? (
+              <Button
+                variant="outline"
+                className="hidden md:flex items-center gap-1"
+                onClick={handleLogout}
+                title="Logout"
+              >
+                <LogOut className="h-4 w-4" />
+                Logout
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                className="hidden md:flex items-center gap-1"
+                onClick={() => navigate("/login")}
+                title="Login"
+              >
+                Login
+              </Button>
+            )}
 
-            <button 
-              className="md:hidden text-gray-700 dark:text-white" 
+            <button
+              className="md:hidden text-gray-700 dark:text-white"
               onClick={toggleMobileMenu}
               aria-label="Toggle mobile menu"
             >
@@ -111,9 +128,9 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div 
+      <div
         className={`md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 transition-all duration-300 ${
-          isMobileMenuOpen ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'
+          isMobileMenuOpen ? "opacity-100 max-h-96" : "opacity-0 max-h-0 overflow-hidden"
         }`}
       >
         <div className="container mx-auto px-4 py-2">
@@ -126,18 +143,30 @@ const Navbar = () => {
             <a href="#book-pickup" onClick={() => setIsMobileMenuOpen(false)}>
               <Button className="w-full">Book Pickup</Button>
             </a>
-            {/* Logout Button - Mobile */}
-            <Button 
-              variant="outline" 
-              className="w-full flex items-center justify-center gap-2"
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                handleLogout();
-              }}
-            >
-              <LogOut className="h-4 w-4" />
-              Logout
-            </Button>
+            {isAuthenticated ? (
+              <Button
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  handleLogout();
+                }}
+              >
+                <LogOut className="h-4 w-4" />
+                Logout
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  navigate("/login");
+                }}
+              >
+                Login
+              </Button>
+            )}
           </nav>
         </div>
       </div>

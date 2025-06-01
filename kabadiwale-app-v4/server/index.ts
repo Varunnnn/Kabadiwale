@@ -1,17 +1,17 @@
-import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
-import dotenv from 'dotenv';
+import express, { Request, Response, NextFunction } from "express";
+import dotenv from "dotenv";
 dotenv.config();
 
-import userRoutes from './routes/userRoutes';
-
+import { registerRoutes } from "./routes";
+import { setupVite, serveStatic, log } from "./vite";
+import userRoutes from "./routes/userRoutes";
+import otpRoutes from "./routes/otpRoutes";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Request logging middleware (unchanged)
+// Request logging middleware
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -30,11 +30,9 @@ app.use((req, res, next) => {
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
-
       if (logLine.length > 80) {
         logLine = logLine.slice(0, 79) + "…";
       }
-
       log(logLine);
     }
   });
@@ -45,29 +43,32 @@ app.use((req, res, next) => {
 (async () => {
   const server = await registerRoutes(app);
 
-  // Add the user-related API routes under /api/user
-  app.use('/api/user', userRoutes);
+  // Register API routes
+  app.use("/api/user", userRoutes);
+  app.use("/api/otp", otpRoutes);
 
+  // Logout route
+  app.post("/api/logout", (_req, res) => {
+    // Clear session/token if any auth mechanism used
+    res.status(200).json({ success: true });
+  });
+
+  // Global error handler
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
-
     res.status(status).json({ message });
     throw err;
   });
 
-  // setup vite or serve static as before
+  // Setup Vite for dev or serve static in prod
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  app.post('/api/logout', (req, res) => {
-    // clear session or token here if you use any auth mechanism
-    res.status(200).send({ success: true });
-  });
-
+  // Start server
   const port = 5001;
   server.listen(
     {
@@ -76,7 +77,7 @@ app.use((req, res, next) => {
       reusePort: true,
     },
     () => {
-      log(`serving on port ${port}`);
+      log(`🚀 Server running on port ${port}`);
     }
   );
 })();

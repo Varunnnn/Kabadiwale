@@ -15,6 +15,7 @@ import { useAuth } from "@/hooks/useAuth";
 const Home = () => {
   return (
     <>
+      <Navbar />
       <Hero />
       <HowItWorks />
       <Benefits />

@@ -21,7 +21,6 @@ function App() {
       <ThemeProvider>
         <TooltipProvider>
           <Toaster />
-          <Navbar />
           <Switch>
             <Route path="/" component={Home} />
             <Route path="/login" component={Login} />

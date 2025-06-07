@@ -151,7 +151,7 @@ const Register = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full mb-4 p-2 border rounded font-semibold text-gray-900 dark:text-gray-900"
+          className="w-full mb-4 p-2 border rounded "
           placeholder="Create a password"
         />
 

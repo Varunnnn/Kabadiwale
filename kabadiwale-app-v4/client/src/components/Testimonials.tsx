@@ -5,21 +5,21 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: "Rahul Sharma",
-      location: "Bangalore",
+      location: "Jaipur",
       rating: 5,
       comment: "Kabadiwale made selling scrap so easy. Their team was punctual, professional, and offered great rates. The UPI payment was instant. Highly recommend!",
       initials: "RS",
     },
     {
       name: "Priya Patel",
-      location: "Mumbai",
+      location: "Jaipur",
       rating: 4.5,
       comment: "I had a lot of e-waste and old papers that were taking up space. Kabadiwale picked it all up and paid me a fair price. The process was smooth and hassle-free.",
       initials: "PP",
     },
     {
       name: "Arjun Kumar",
-      location: "Delhi",
+      location: "Jaipur",
       rating: 5,
       comment: "As a business owner, I had a lot of cardboard and packaging waste. Kabadiwale's commercial pickup service is excellent. Their digital weighing system is transparent and trustworthy.",
       initials: "AK",

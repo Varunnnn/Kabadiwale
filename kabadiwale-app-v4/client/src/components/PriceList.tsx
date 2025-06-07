@@ -13,6 +13,7 @@ const PriceList = () => {
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
           {/* Metal */}
           <Card className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden">
             <CardHeader className="bg-primary text-white p-4">
@@ -33,20 +34,12 @@ const PriceList = () => {
                 </li>
                 <li className="flex justify-between">
                   <span>Cable</span>
-                  <span className="font-medium">₹400/kg</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Brass</span>
-                  <span className="font-medium">₹300/kg</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Steel</span>
-                  <span className="font-medium">₹35/kg</span>
+                  <span className="font-medium">₹36/kg</span>
                 </li>
               </ul>
             </CardContent>
           </Card>
-          
+
           {/* Paper */}
           <Card className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden">
             <CardHeader className="bg-primary text-white p-4">
@@ -58,35 +51,27 @@ const PriceList = () => {
             <CardContent className="p-4">
               <ul className="space-y-2">
                 <li className="flex justify-between">
-                  <span>Newspaper</span>
-                  <span className="font-medium">₹16/kg</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Books & Magazines</span>
-                  <span className="font-medium">₹12/kg</span>
+                  <span>Newspaper/Books & Magazines</span>
+                  <span className="font-medium">₹10/kg</span>
                 </li>
                 <li className="flex justify-between">
                   <span>Cardboard</span>
+                  <span className="font-medium">₹9/kg</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Mil Board</span>
                   <span className="font-medium">₹8/kg</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>White Paper</span>
-                  <span className="font-medium">₹20/kg</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Grey Board</span>
-                  <span className="font-medium">₹6/kg</span>
                 </li>
               </ul>
             </CardContent>
           </Card>
-          
+
           {/* Plastic */}
           <Card className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden">
             <CardHeader className="bg-primary text-white p-4">
               <div className="flex items-center">
                 <TicketCheck className="h-6 w-6 mr-3" />
-                <h3 className="font-poppins font-semibold text-xl">Plastic</h3>
+                <h3 className="font-poppins font-semibold text-xl">Plastic/Glass</h3>
               </div>
             </CardHeader>
             <CardContent className="p-4">
@@ -100,22 +85,15 @@ const PriceList = () => {
                   <span className="font-medium">₹10/kg</span>
                 </li>
                 <li className="flex justify-between">
-                  <span>PET Bottles</span>
-                  <span className="font-medium">₹20/kg</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Milk Packets</span>
-                  <span className="font-medium">₹12/kg</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Mixed Plastic</span>
-                  <span className="font-medium">₹8/kg</span>
+                  <span>Glass Bottles</span>
+                  <span className="font-medium">₹3/kg</span>
                 </li>
               </ul>
             </CardContent>
           </Card>
-          
-          {/* E-Waste */}
+
+          {/* Optional: E-Waste (Uncomment to show) */}
+          {/*
           <Card className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden">
             <CardHeader className="bg-primary text-white p-4">
               <div className="flex items-center">
@@ -148,42 +126,9 @@ const PriceList = () => {
               </ul>
             </CardContent>
           </Card>
-          
-          {/* Other Items */}
-          <Card className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden">
-            <CardHeader className="bg-primary text-white p-4">
-              <div className="flex items-center">
-                <MoreHorizontal className="h-6 w-6 mr-3" />
-                <h3 className="font-poppins font-semibold text-xl">Other Items</h3>
-              </div>
-            </CardHeader>
-            <CardContent className="p-4">
-              <ul className="space-y-2">
-                <li className="flex justify-between">
-                  <span>Glass Bottles</span>
-                  <span className="font-medium">₹2/kg</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Tin</span>
-                  <span className="font-medium">₹15/kg</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Beer Bottles</span>
-                  <span className="font-medium">₹5/piece</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Tyre & Rubber</span>
-                  <span className="font-medium">₹6/kg</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>AC & Fridge</span>
-                  <span className="font-medium">₹45/kg</span>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-          
-          {/* Call to action */}
+          */}
+
+          {/* Call to Action */}
           <Card className="bg-secondary/10 flex flex-col justify-center p-6">
             <h3 className="font-poppins font-semibold text-xl mb-3 text-secondary">Ready to sell your scrap?</h3>
             <p className="text-gray-700 mb-4">Book a pickup now and get the best rates for your recyclable waste.</p>
@@ -193,6 +138,7 @@ const PriceList = () => {
               </Button>
             </a>
           </Card>
+
         </div>
       </div>
     </section>

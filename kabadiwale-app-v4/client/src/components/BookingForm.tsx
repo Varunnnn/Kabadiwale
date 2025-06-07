@@ -27,10 +27,10 @@ interface ScrapItem {
 
 const scrapItems: ScrapItem[] = [
   { id: "metal", name: "Metal", rate: "Up to ₹60/kg", icon: <Cable className="text-secondary h-5 w-5 mr-2" /> },
-  { id: "paper", name: "Paper", rate: "Up to ₹20/kg", icon: <FilesIcon className="text-primary h-5 w-5 mr-2" /> },
-  { id: "plastic", name: "Plastic", rate: "Up to ₹15/kg", icon: <TicketCheck className="text-secondary h-5 w-5 mr-2" /> },
-  { id: "milk_packets", name: "Milk Packets", rate: "Up to ₹12/kg", icon: <Box className="text-primary h-5 w-5 mr-2" /> },
-  { id: "e_waste", name: "E-Waste", rate: "Up to ₹40/kg", icon: <Computer className="text-secondary h-5 w-5 mr-2" /> },
+  { id: "paper", name: "Paper", rate: "Up to ₹11/kg", icon: <FilesIcon className="text-primary h-5 w-5 mr-2" /> },
+  { id: "plastic", name: "Plastic", rate: "Up to ₹13/kg", icon: <TicketCheck className="text-secondary h-5 w-5 mr-2" /> },
+  {/* id: "milk_packets", name: "Milk Packets", rate: "Up to ₹12/kg", icon: <Box className="text-primary h-5 w-5 mr-2" /> },
+  { id: "e_waste", name: "E-Waste", rate: "Up to ₹40/kg", icon: <Computer className="text-secondary h-5 w-5 mr-2" /> */},
   { id: "others", name: "Others", rate: "Various rates", icon: <MoreHorizontal className="text-gray-700 h-5 w-5 mr-2" /> },
 ];
 

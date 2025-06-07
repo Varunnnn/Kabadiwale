@@ -115,8 +115,8 @@ const PriceList = () => {
             </CardContent>
           </Card>
           
-          {/* E-Waste */}
-          <Card className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden">
+           {/* E-Waste */}
+          {/* This is a JSX comment <Card className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden">
             <CardHeader className="bg-primary text-white p-4">
               <div className="flex items-center">
                 <Computer className="h-6 w-6 mr-3" />
@@ -147,7 +147,7 @@ const PriceList = () => {
                 </li>
               </ul>
             </CardContent>
-          </Card>
+          </Card> */}
           
           {/* Other Items */}
           <Card className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden">

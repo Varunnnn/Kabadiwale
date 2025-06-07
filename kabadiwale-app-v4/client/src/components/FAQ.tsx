@@ -23,11 +23,11 @@ const FAQ = () => {
     {
       question: "What payment methods do you offer?",
       answer: "We offer multiple payment options for your convenience. You can choose to receive payment via UPI, IMPS, or cash. The payment is made instantly after weighing your scrap materials."
-    },
-    {
+    }
+    /*{
       question: "Is there a minimum quantity requirement for pickup?",
       answer: "Yes, we have a minimum quantity requirement of 5 kg for a pickup. However, if you have mixed scrap types, the combined weight should be at least 5 kg. For certain high-value items like copper or brass, lower quantities may be accepted."
-    }
+    }*/
   ];
 
   return (
@@ -39,13 +39,13 @@ const FAQ = () => {
             Find answers to commonly asked questions about our scrap collection service.
           </p>
         </div>
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl no-underline mx-auto">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`faq-${index}`}
-                className="border border-gray-200 rounded-lg px-4"
+                className="border border-gray-200 no-underline rounded-lg px-4"
               >
                 <AccordionTrigger className="font-medium text-left py-3">
                   {faq.question}

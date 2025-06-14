@@ -5,7 +5,7 @@ import { insertBookingSchema, updateBookingSchema } from "@shared/schema";
 import { z } from "zod";
 import { fromZodError } from "zod-validation-error";
 import { NotificationService } from "./notifications";
-import nodemailer from "nodemailer";
+import nodemailer from "nodemailer" ;
 import crypto from "crypto";
 import session from "express-session";
 
